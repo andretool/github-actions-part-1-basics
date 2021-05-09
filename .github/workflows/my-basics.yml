@@ -56,12 +56,12 @@ jobs:
         run: 'echo hello world deploy'
         
       - name : Print env vars
-       run: |
-         echo "this is ${{env.VAR1}}"
-         echo "this is ${{env.VAR2}}"
-         echo "this is $LOCAL_VAR"
-       env:
-         LOCAL_VAR: "this is local_var"
+        run: |
+          echo "this is ${{env.VAR1}}"
+          echo "this is ${{env.VAR2}}"
+          echo "this is $LOCAL_VAR"
+        env:
+          LOCAL_VAR: "this is local_var"
        
        
       - name : Print Deploy pacgake 
