@@ -48,10 +48,22 @@ jobs:
   my-deploy:
     runs-on: ubuntu-latest 
     needs: [build]
+    env:
+      VAR1: "This VAR1"
+      VAR2: "This VAR2"
     steps:
       - name:  print message from deploy
         run: 'echo hello world deploy'
-
+        
+      - name : Print env vars
+       run: |
+         echo "this is ${{env.VAR1}}"
+         echo "this is ${{env.VAR2}}"
+         echo "this is $LOCAL_VAR"
+       env:
+         LOCAL_VAR: "this is local_var"
+       
+       
       - name : Print Deploy pacgake 
         run: echo "Deploy package name is ${{ env.APPLICATION_NAME }}"
 
@@ -59,4 +71,4 @@ jobs:
         run: aws --version
         
       - name: Lets test some package 2
-        run: zip 
+        run: zip --version
